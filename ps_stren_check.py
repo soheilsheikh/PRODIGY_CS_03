@@ -97,10 +97,6 @@ check_button.grid(row=1, column=0, pady=10, padx=5, sticky="we")
 clear_button = tk.Button(frame, text="Clear", command=clear_input, bg="red", fg="black", font=("Arial", 14))
 clear_button.grid(row=1, column=3, pady=10, padx=5, sticky="we")
 
-strength_meter = ttk.Progressbar(frame, orient=tk.HORIZONTAL, length=450, mode='determinate', value=0,
-                                style="Blue.Horizontal.TProgressbar")
-strength_meter.grid(row=4, column=0, columnspan=3, pady=12)
-
 output_text = tk.Text(frame, height=10, width=60, state='disabled', font=("Arial", 12))
 output_text.grid(row=2, column=0, columnspan=4, pady=10)
 
