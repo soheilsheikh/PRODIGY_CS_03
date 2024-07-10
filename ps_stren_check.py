@@ -79,7 +79,7 @@ def animate_progress_bar(progressbar, target_value, current_value):
 
 
 root = tk.Tk()
-root.title("Strong Password Checker")
+root.title("Password Strength Checker")
 root.geometry("650x400")
 
 frame = tk.Frame(root, bg="white")  
@@ -91,15 +91,23 @@ label.grid(row=0, column=0, padx=5, pady=5, sticky="e")
 password_entry = tk.Entry(frame, show="*", font=("Arial", 14))
 password_entry.grid(row=0, column=1, padx=5, pady=5, sticky="we")
 
-check_button = tk.Button(frame, text="Check", command=check_password, bg="lightgreen", fg="black", font=("Arial", 14))
+check_button = tk.Button(frame, text="Check", command=check_password, bg="yellow", fg="black", font=("Arial", 14))
 check_button.grid(row=1, column=0, pady=10, padx=5, sticky="we")
 
-clear_button = tk.Button(frame, text="Clear", command=clear_input, bg="lightcoral", fg="black", font=("Arial", 14))
-clear_button.grid(row=1, column=3, pady=10, padx=5, sticky="we")
+clear_button = tk.Button(frame, text="Clear", command=clear_input, bg="red", fg="black", font=("Arial", 14))
+clear_button.grid(row=1, column=2, pady=10, padx=5, sticky="we")
+
+strength_meter = ttk.Progressbar(frame, orient=tk.HORIZONTAL, length=450, mode='determinate', value=0,
+                                style="Blue.Horizontal.TProgressbar")
+strength_meter.grid(row=4, column=0, columnspan=3, pady=12)
 
 output_text = tk.Text(frame, height=10, width=60, state='disabled', font=("Arial", 12))
 output_text.grid(row=2, column=0, columnspan=4, pady=10)
 
+password_entry.bind("<KeyRelease>", lambda event: check_password())
+
+root.protocol("WM_DELETE_WINDOW", on_closing)
+root.mainloop()
 password_entry.bind("<KeyRelease>", lambda event: check_password())
 
 root.protocol("WM_DELETE_WINDOW", on_closing)
